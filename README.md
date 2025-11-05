@@ -125,7 +125,7 @@ IVP/
 pip install numpy scikit-learn matplotlib seaborn joblib scipy
 ```
 
-### 0. Download & prepare data (images → features)
+### 1. Download & prepare data (images → features)
 
 Before training or evaluation you must download the FITS images and extract features. Use the following helper scripts:
 
@@ -150,7 +150,7 @@ Notes:
 - `preprocess_and_extract.py` saves a 35-column base feature matrix by default and also contains the feature-engineering logic used by training scripts (it will save `features.npy` in the project root).
 - If you plan to evaluate using the full engineered feature set, run the engineering step (either done inside `train_model_improved.py` or via the provided utility) so the pipeline receives the same 61-feature inputs it was trained on.
 
-### 1. Evaluate the Model
+### 2. Evaluate the Model
 Run comprehensive evaluation on training, test, and full datasets:
 ```bash
 python3 final_model_evaluation.py
@@ -162,7 +162,7 @@ python3 final_model_evaluation.py
 - Overfitting analysis
 - 3 confusion matrix visualizations
 
-### 2. Generate Performance Visualizations
+### 3. Generate Performance Visualizations
 Create bar graphs and comparison charts:
 ```bash
 python3 create_performance_visualizations.py
@@ -173,7 +173,7 @@ python3 create_performance_visualizations.py
 - `overall_accuracy_comparison.png` - Overall accuracy comparison
 - `precision_recall_comparison.png` - Precision/recall analysis
 
-### 3. Retrain the Model
+### 4. Retrain the Model
 ```bash
 python3 train_model_improved.py
 ```
