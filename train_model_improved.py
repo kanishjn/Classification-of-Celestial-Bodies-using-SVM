@@ -200,7 +200,7 @@ class ImprovedSVMTrainer:
         print("   - Classifier: SVC(C=10, gamma=0.05, rbf, balanced)")
         print("   - Pipeline order: selector → scaler → svm")
         
-        # Match exact pipeline from ultimate_svm_model.joblib
+
         self.pipeline = Pipeline([
             ('selector', SelectKBest(mutual_info_classif, k=50)),
             ('scaler', StandardScaler()),

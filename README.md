@@ -125,6 +125,31 @@ IVP/
 pip install numpy scikit-learn matplotlib seaborn joblib scipy
 ```
 
+### 0. Download & prepare data (images → features)
+
+Before training or evaluation you must download the FITS images and extract features. Use the following helper scripts:
+
+- `image.py` — downloads or organizes raw FITS images into `sdss_data/` (or `sdss_data/images`).
+- `preprocess_and_extract.py` — reads FITS files, segments objects, and saves the feature matrix and labels as `features.npy` / `labels.npy` and `files_labels.csv`.
+- `fit_converter.py` — simple viewer/inspector to open and visualise downloaded FITS images to confirm they were downloaded correctly.
+
+Run these in order (from project root):
+
+```bash
+# 1) download or assemble images
+python3 image.py
+
+# 2) (optional) preview downloaded FITS files
+python3 fit_converter.py
+
+# 3) extract features (creates features.npy, labels.npy)
+python3 preprocess_and_extract.py
+```
+
+Notes:
+- `preprocess_and_extract.py` saves a 35-column base feature matrix by default and also contains the feature-engineering logic used by training scripts (it will save `features.npy` in the project root).
+- If you plan to evaluate using the full engineered feature set, run the engineering step (either done inside `train_model_improved.py` or via the provided utility) so the pipeline receives the same 61-feature inputs it was trained on.
+
 ### 1. Evaluate the Model
 Run comprehensive evaluation on training, test, and full datasets:
 ```bash
